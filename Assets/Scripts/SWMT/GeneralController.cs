@@ -37,6 +37,10 @@ public class GeneralController : MonoBehaviour {
 
     //public GameObject enterParticipantNameGameobject;
     public Text ParticipantText;
+    // seed
+    public int seed = 0;
+    public int[] seedValues;
+  
     // Use this for initialization
     void Start () {
         PlayerPrefs.SetInt("block number", 2);
@@ -60,7 +64,17 @@ public class GeneralController : MonoBehaviour {
         IsCorrectShowUp = false;
 
         LastCorrectSequencerArray = new string[8];
-      
+
+        // seed
+        Random.InitState(seed);
+        seedValues = new int[20];
+        int i = 0;
+        while (i < seedValues.Length)
+        {
+            seedValues[i] = Random.Range(1, 1000);
+            i++;
+        }
+
     }
 	
 	// Update is called once per frame

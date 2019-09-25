@@ -21,11 +21,17 @@ public class Q1Patten : MonoBehaviour {
     private int BlockNumber = 0;
     private int timeCount = 0;
     private float startTime = 0;
+
+  
+    private int countForQuestion = 0;
+    private int chance = 0;
+    
     // Use this for initialization
     void Start()
     {
-     
-       // correctIndexArray = new int[BlockNumber];
+  
+        
+        // correctIndexArray = new int[BlockNumber];
     }
     private void OnEnable()
     {
@@ -33,6 +39,10 @@ public class Q1Patten : MonoBehaviour {
         Cursor.visible = false;
         PlayerPrefs.SetInt("block number", PlayerPrefs.GetInt("block number"));
         BlockNumber = PlayerPrefs.GetInt("block number");
+        chance = canvas.GetComponent<GeneralController>().chance;
+        countForQuestion = 2 * BlockNumber - 4 + chance;
+        Random.InitState(canvas.GetComponent<GeneralController>().seedValues[countForQuestion]);
+        correctIndexList = new List<int>();
         for (int i = 0; i < BlockNumber; i++)
         {
             correctIndexList.Add((int)Random.Range(0.0001f, 8.9999f));
@@ -46,6 +56,7 @@ public class Q1Patten : MonoBehaviour {
         }
         timeCount = BlockNumber;
         startTime = Time.time;
+       
     }
     private void OnDisable()
     {
@@ -54,7 +65,6 @@ public class Q1Patten : MonoBehaviour {
         timeCount = 0;
         BlockNumber = 0;
         startTime = 0;
-        correctIndexList = new List<int>();
     }
     // Update is called once per frame
     void Update () {

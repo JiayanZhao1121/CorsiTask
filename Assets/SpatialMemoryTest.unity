@@ -2372,6 +2372,8 @@ MonoBehaviour:
   canvas: {fileID: 778366272}
   LastCorrectSequencerArray: []
   ParticipantText: {fileID: 1348858902}
+  seed: 1
+  seedValues: 
 --- !u!114 &778366274
 MonoBehaviour:
   m_ObjectHideFlags: 0
